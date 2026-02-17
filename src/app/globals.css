@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #020617; /* slate-950 */
+  --color-foreground: #f8fafc; /* slate-50 */
+  
+  --color-neon-pink: #f472b6;
+  --color-neon-violet: #a78bfa;
+  --color-neon-cyan: #22d3ee;
+
+  --animate-glow: glow 2s ease-in-out infinite alternate;
+
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #f472b6, 0 0 40px #f472b6;
+    }
+    to {
+      text-shadow: 0 0 20px #fff, 0 0 30px #a78bfa, 0 0 40px #a78bfa, 0 0 50px #a78bfa;
+    }
+  }
+}
+
+:root {
+  --background: #020617;
+  --foreground: #f8fafc;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
+  selection-background-color: var(--color-neon-pink);
+  selection-color: white;
+}
+
+/* Custom Utilities for Glow Effects */
+@utility glow-pink {
+  box-shadow: 0 0 15px rgba(244, 114, 182, 0.5);
+  border: 1px solid rgba(244, 114, 182, 0.5);
+}
+
+@utility glow-violet {
+  box-shadow: 0 0 15px rgba(167, 139, 250, 0.5);
+  border: 1px solid rgba(167, 139, 250, 0.5);
+}
+
+@utility glass {
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
