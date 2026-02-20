@@ -1,21 +1,61 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #020617; /* slate-950 */
-  --color-foreground: #f8fafc; /* slate-50 */
-  
+  --color-background: #020617;
+  /* slate-950 */
+  --color-foreground: #f8fafc;
+  /* slate-50 */
+
   --color-neon-pink: #f472b6;
   --color-neon-violet: #a78bfa;
   --color-neon-cyan: #22d3ee;
 
   --animate-glow: glow 2s ease-in-out infinite alternate;
+  --animate-float: float 3s ease-in-out infinite;
+  --animate-envelope-open: envelope-open 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  --animate-letter-rise: letter-rise 1s cubic-bezier(0.4, 0, 0.2, 1) 0.8s forwards;
 
   @keyframes glow {
     from {
       text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #f472b6, 0 0 40px #f472b6;
     }
+
     to {
       text-shadow: 0 0 20px #fff, 0 0 30px #a78bfa, 0 0 40px #a78bfa, 0 0 50px #a78bfa;
+    }
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  @keyframes envelope-open {
+    0% {
+      transform: rotateX(0deg);
+    }
+
+    100% {
+      transform: rotateX(180deg);
+    }
+  }
+
+  @keyframes letter-rise {
+    0% {
+      transform: translateY(0);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateY(-60px);
+      opacity: 1;
     }
   }
 }
@@ -29,8 +69,13 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   min-height: 100vh;
-  selection-background-color: var(--color-neon-pink);
-  selection-color: white;
+  overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background-color: var(--color-neon-pink);
+  color: white;
 }
 
 /* Custom Utilities for Glow Effects */
@@ -48,4 +93,38 @@ body {
   background: rgba(15, 23, 42, 0.7);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Letter-specific utilities */
+@utility letter-paper {
+  background: linear-gradient(135deg, #1e1b2e 0%, #0f0d1a 50%, #1a1730 100%);
+  border: 1px solid rgba(167, 139, 250, 0.15);
+  box-shadow: 0 0 40px rgba(167, 139, 250, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+@utility letter-serif {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-weight: 400;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+}
+
+/* Gallery card styles */
+@utility gallery-card {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Touch-friendly scrollbar hiding for mobile */
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@utility no-scrollbar::-webkit-scrollbar {
+  display: none;
 }

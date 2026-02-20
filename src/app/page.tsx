@@ -2,7 +2,8 @@ import InteractiveGift from "@/components/InteractiveGift";
 import RadarDistancia from "@/components/RadarDistancia";
 import PoemChest from "@/components/PoemChest";
 import GeminiOracle from "@/components/GeminiOracle";
-import { Heart, Stars } from "lucide-react";
+import { Heart, Stars, Mail, ImageIcon } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -19,9 +20,27 @@ export default function Home() {
           Lia <span className="text-neon-pink">&</span> Josh
         </h1>
         <p className="text-sm font-sans text-slate-400 uppercase tracking-[0.3em] mb-12">
-          Nuestro Nodo • Est. 2024
+          Nuestro Nodo - Est. 2024
         </p>
       </section>
+
+      {/* Quick Nav Cards */}
+      <div className="max-w-sm mx-auto grid grid-cols-2 gap-3 mb-12">
+        <Link href="/cartas">
+          <div className="glass rounded-2xl p-5 text-center active:scale-[0.97] transition-transform">
+            <Mail size={28} className="text-neon-pink mx-auto mb-3" />
+            <p className="text-sm font-outfit text-white">Cartas</p>
+            <p className="text-[10px] text-slate-600 mt-1">de Amor</p>
+          </div>
+        </Link>
+        <Link href="/galeria">
+          <div className="glass rounded-2xl p-5 text-center active:scale-[0.97] transition-transform">
+            <ImageIcon size={28} className="text-neon-violet mx-auto mb-3" />
+            <p className="text-sm font-outfit text-white">Galeria</p>
+            <p className="text-[10px] text-slate-600 mt-1">Nuestras Fotos</p>
+          </div>
+        </Link>
+      </div>
 
       {/* Grid Layout */}
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8">
@@ -31,7 +50,7 @@ export default function Home() {
           <div className="glass rounded-3xl overflow-hidden min-h-[400px] flex items-center justify-center relative bg-slate-900/40">
             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 pointer-events-none" />
             <InteractiveGift
-              message="Este es un cupón válido por un abrazo infinito que te daré el primer segundo que te vea en México. No caduca."
+              message="Este es un cupon valido por un abrazo infinito que te dare el primer segundo que te vea en Mexico. No caduca."
               sender="Josh"
             />
           </div>
@@ -43,7 +62,7 @@ export default function Home() {
         <div className="md:col-span-12 lg:col-span-4 space-y-6">
           <RadarDistancia
             targetDate="2026-03-15T12:00:00"
-            destination="MÉXICO (MARZO)"
+            destination="MEXICO (MARZO)"
           />
           <RadarDistancia
             targetDate="2026-06-01T12:00:00"
@@ -54,7 +73,7 @@ export default function Home() {
             <p className="text-xs font-sans text-slate-500 uppercase tracking-widest mb-2">Estado del Nodo</p>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              <p className="text-sm font-outfit text-white">CONECTADOS • TIEMPO REAL</p>
+              <p className="text-sm font-outfit text-white">CONECTADOS - TIEMPO REAL</p>
             </div>
           </div>
         </div>
@@ -66,7 +85,7 @@ export default function Home() {
       </div>
 
       <footer className="mt-24 text-center text-[10px] text-slate-600 font-sans uppercase tracking-[0.5em]">
-        Hecho con amor • Basado en el stack de Estrumetal
+        Hecho con amor - Basado en el stack de Estrumetal
       </footer>
     </main>
   );
